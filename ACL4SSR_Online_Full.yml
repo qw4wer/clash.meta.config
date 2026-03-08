@@ -1,0 +1,253 @@
+# 基础网络配置
+mixed-port: 7890
+allow-lan: true
+mode: Rule
+log-level: info
+
+# ==================== 1. 代理节点（你需要自行填充具体节点信息） ====================
+proxies:
+
+
+# ==================== 2. 代理组（保留你的原有结构） ====================
+proxy-groups:
+  - name: 节点选择
+    type: select
+    proxies:
+      - <countries>
+      - 手动切换
+      - DIRECT
+  - name: 手动切换
+    type: select
+    proxies:
+      - <all>
+  - name: 游戏平台（中国）
+    type: select
+    proxies:
+      - 节点选择
+      - <countries>
+      - 手动切换
+      - DIRECT
+  - name: 游戏平台（全球）
+    type: select
+    proxies:
+      - 节点选择
+      - <countries>
+      - 手动切换
+      - DIRECT
+  - name: 巴哈姆特
+    type: select
+    proxies:
+      - 节点选择
+      - <countries>
+      - 手动切换
+      - DIRECT
+  - name: 哔哩哔哩
+    type: select
+    proxies:
+      - 节点选择
+      - <countries>
+      - 手动切换
+      - DIRECT
+  - name: Telegram
+    type: select
+    proxies:
+      - 节点选择
+      - <countries>
+      - 手动切换
+      - DIRECT
+  - name: OpenAI
+    type: select
+    proxies:
+      - 节点选择
+      - <countries>
+      - 手动切换
+      - DIRECT
+  - name: Youtube
+    type: select
+    proxies:
+      - 节点选择
+      - <countries>
+      - 手动切换
+      - DIRECT
+  - name: Microsoft
+    type: select
+    proxies:
+      - 节点选择
+      - <countries>
+      - 手动切换
+      - DIRECT
+  - name: Onedrive
+    type: select
+    proxies:
+      - 节点选择
+      - <countries>
+      - 手动切换
+      - DIRECT
+  - name: Apple
+    type: select
+    proxies:
+      - 节点选择
+      - <countries>
+      - 手动切换
+      - DIRECT
+  - name: Netflix
+    type: select
+    proxies:
+      - 节点选择
+      - <countries>
+      - 手动切换
+      - DIRECT
+  - name: 广告拦截
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+  - name: 漏网之鱼
+    type: select
+    proxies:
+      - 节点选择
+      - <countries>
+      - 手动切换
+      - DIRECT
+
+# ==================== 3. 规则集定义（rule-providers） ====================
+rule-providers:
+  # 直连类规则集
+  global_direct_lan:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list
+    interval: 86400
+    path: ./rules/global_direct_lan.yaml
+  global_direct_unban:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/UnBan.list
+    interval: 86400
+    path: ./rules/global_direct_unban.yaml
+  global_direct_google_cn:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/GoogleCN.list
+    interval: 86400
+    path: ./rules/global_direct_google_cn.yaml
+  global_direct_steam_cn:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/SteamCN.list
+    interval: 86400
+    path: ./rules/global_direct_steam_cn.yaml
+  global_direct_china_domain:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaDomain.list
+    interval: 86400
+    path: ./rules/global_direct_china_domain.yaml
+  global_direct_china_company_ip:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaCompanyIp.list
+    interval: 86400
+    path: ./rules/global_direct_china_company_ip.yaml
+  global_direct_download:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Download.list
+    interval: 86400
+    path: ./rules/global_direct_download.yaml
+
+  # 拦截/净化类规则集
+  block_ad:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list
+    interval: 86400
+    path: ./rules/block_ad.yaml
+  block_program_ad:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list
+    interval: 86400
+    path: ./rules/block_program_ad.yaml
+
+  # 补充代理规则集
+  proxy_google_fcm:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleFCM.list
+    interval: 86400
+    path: ./rules/proxy_google_fcm.yaml
+  proxy_netease_music:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/NetEaseMusic.list
+    interval: 86400
+    path: ./rules/proxy_netease_music.yaml
+  proxy_media_china:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaMedia.list
+    interval: 86400
+    path: ./rules/proxy_media_china.yaml
+  proxy_media_foreign:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyMedia.list
+    interval: 86400
+    path: ./rules/proxy_media_foreign.yaml
+  proxy_gfwlist:
+    type: http
+    behavior: classical
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyGFWlist.list
+    interval: 86400
+    path: ./rules/proxy_gfwlist.yaml
+
+# ==================== 4. 最终规则列表（整合原有规则+规则集） ====================
+rules:
+  # 第一优先级：广告拦截（复用你的「广告拦截」代理组）
+  - RULE-SET,block_ad,广告拦截
+  - RULE-SET,block_program_ad,广告拦截
+  - GEOSITE,category-ads-all,广告拦截,no-resolve
+
+  # 第二优先级：本地/私有网络直连
+  - GEOSITE,private,DIRECT,no-resolve
+  - GEOIP,private,DIRECT
+  - RULE-SET,global_direct_lan,DIRECT
+  - RULE-SET,global_direct_unban,DIRECT
+
+  # 第三优先级：指定服务代理（复用你的专属代理组）
+  - GEOSITE,microsoft,Microsoft
+  - GEOSITE,apple,Apple
+  - GEOSITE,netflix,Netflix
+  - GEOIP,netflix,Netflix
+  - GEOSITE,onedrive,Onedrive
+  - GEOSITE,youtube,Youtube
+  - GEOSITE,telegram,Telegram
+  - GEOIP,telegram,Telegram
+  - GEOSITE,openai,OpenAI
+  - GEOSITE,bilibili,哔哩哔哩
+  - GEOSITE,bahamut,巴哈姆特
+  - GEOSITE,category-games@cn,游戏平台（中国）
+  - GEOSITE,category-games,游戏平台（全球）
+  
+  # 补充规则集代理
+  - RULE-SET,proxy_google_fcm,节点选择
+  - RULE-SET,proxy_netease_music,节点选择
+  - RULE-SET,proxy_media_foreign,节点选择
+  - RULE-SET,proxy_gfwlist,节点选择
+
+  # 第四优先级：国内服务直连
+  - RULE-SET,global_direct_google_cn,DIRECT
+  - RULE-SET,global_direct_steam_cn,DIRECT
+  - RULE-SET,global_direct_china_domain,DIRECT
+  - RULE-SET,global_direct_china_company_ip,DIRECT
+  - RULE-SET,global_direct_download,DIRECT
+  - RULE-SET,proxy_media_china,DIRECT
+  - GEOSITE,CN,DIRECT
+  - GEOIP,CN,DIRECT
+
+  # 第五优先级：境外通用代理
+  - GEOSITE,geolocation-!cn,节点选择
+
+  # 兜底规则（复用你的「漏网之鱼」代理组）
+  - MATCH,漏网之鱼
