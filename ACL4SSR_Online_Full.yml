@@ -2,7 +2,7 @@
 mixed-port: 7890
 allow-lan: true
 mode: Rule
-log-level: info
+log-level: warning
 
 # ==================== 1. 代理节点（你需要自行填充具体节点信息） ====================
 proxies:
@@ -49,13 +49,6 @@ proxy-groups:
       - 手动切换
       - DIRECT
   - name: Telegram
-    type: select
-    proxies:
-      - 节点选择
-      - <countries>
-      - 手动切换
-      - DIRECT
-  - name: ex
     type: select
     proxies:
       - 节点选择
@@ -233,7 +226,6 @@ rules:
   - GEOIP,telegram,Telegram
   - GEOSITE,openai,OpenAI
   - GEOSITE,bilibili,哔哩哔哩
-  - GEOSITE,exhentai,ex
   - GEOSITE,bahamut,巴哈姆特
   - GEOSITE,category-games@cn,游戏平台（中国）
   - GEOSITE,category-games,游戏平台（全球）
