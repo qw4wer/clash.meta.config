@@ -55,6 +55,13 @@ proxy-groups:
       - <countries>
       - 手动切换
       - DIRECT
+  - name: Exhentai
+    type: select
+    proxies:
+      - 节点选择
+      - <countries>
+      - 手动切换
+      - DIRECT
   - name: OpenAI
     type: select
     proxies:
@@ -225,6 +232,7 @@ rules:
   - GEOSITE,telegram,Telegram
   - GEOIP,telegram,Telegram
   - GEOSITE,openai,OpenAI
+  - GEOSITE,exhentai,Exhentai
   - GEOSITE,bilibili,哔哩哔哩
   - GEOSITE,bahamut,巴哈姆特
   - GEOSITE,category-games@cn,游戏平台（中国）
