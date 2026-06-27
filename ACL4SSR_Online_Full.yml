@@ -265,6 +265,8 @@ rules:
   - RULE-SET,proxy_media_china,DIRECT
   - GEOSITE,CN,DIRECT
   - GEOIP,CN,DIRECT
+  # 自定义测试
+  - 'DOMAIN-SUFFIX,onemt.co,DIRECT'
 
   # 第五优先级：境外通用代理
   - GEOSITE,geolocation-!cn,节点选择
