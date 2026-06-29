@@ -249,7 +249,7 @@ rules:
   - GEOSITE,ehentai ,Ehentai 
   - GEOSITE,bilibili,哔哩哔哩
   - GEOSITE,bahamut,巴哈姆特
-  - GEOSITE,category-games@cn,游戏平台（中国）
+  - GEOSITE,category-games-cn,游戏平台（中国）
   - GEOSITE,category-games,游戏平台（全球）
   
   # 补充规则集代理
